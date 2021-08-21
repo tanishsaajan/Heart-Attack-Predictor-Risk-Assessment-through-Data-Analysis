@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Heart Attack Predictor</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='logo.ico') }}">
+		<link rel="stylesheet" type="text/css" href="../static/st.css">
+		<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	</head>
+
+    <body>
+
+        <!-- Website Title -->
+		<div class="container">
+            <h2 class='container-heading'><span class="heading_font">Heart Attack Predictor</span></h2>
+            <div class='description'>
+    		<p>Treat your ❤️ right</p>
+    		</div>
+    	</div>
+
+		<!-- Result -->
+		<div class="results">
+			{% if prediction>0.5 %}
+				<h1>Prediction: <span class='danger'>{{prediction_text}}</span></h1>
+				<img class="gif" src="{{ url_for('static', filename='sad.gif') }}" alt="Heart Disease Image">
+				<div class="gyan">
+					<h2 style="color: red;">Tips for better heart condition: </h2>
+					<ul>
+						<li>Manage your blood pressure.</li>
+						<li>Manage cholesterol and triglycerides.</li>
+						<li>Keep a healthy weight.</li>
+						<li>Exercise regularly.</li>
+						<li>Stop smoking</li>
+
+					
+					</ul>				
+				</div>
+
+			{% elif prediction<0.5 %}
+				<h1>Prediction: <span class='safe'>{{prediction_text}}</span></h1>
+				<img class="gif1" src="{{ url_for('static', filename='happy.gif') }}" alt="No Heart Disease Image">
+			{% endif %}
+		</div>
+		<div class="homm">
+			<a href='/'><input type="submit" class="my-cta-button" value="Go back to home page"></a>
+		</div>
+		<!-- Footer -->
+       <div class='footer'>
+           <p class='footer-description'>Developed by Tanish Saajan</p>
+       </div>
+
+	</body>
+</html>
